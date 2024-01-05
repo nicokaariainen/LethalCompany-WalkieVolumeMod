@@ -22,7 +22,6 @@ namespace WalkieVolume.Patches
                 prop.SetValue(t, DEFAULT_VOLUME * WalkieVolumeBase.VolumeMultiplier.Value);
                 WalkieVolumeBase.mls.LogInfo($"Walkie volume set to: {DEFAULT_VOLUME * WalkieVolumeBase.VolumeMultiplier.Value}");
             });
-            
         }
     }
 }

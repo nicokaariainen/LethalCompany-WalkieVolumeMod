@@ -24,19 +24,21 @@ namespace WalkieVolume
 
         private void Awake()
         {
-            var value = this.Config.Bind<float>("General", "VolumeMultiplier", 1f, "Volume multiplier. 0.5 for 50%, 1.5 for 150% etc. Max value is 2.").Value;
-            VolumeMultiplier.Value = Math.Min(Math.Max(value, 0f), 2f);
+            mls = BepInEx.Logging.Logger.CreateLogSource(modGUID);
 
+            VolumeMultiplier = base.Config.Bind<float>("General", "VolumeMultiplier", 1f, "Volume multiplier. 0.5 for 50%, 1.5 for 150% etc. Max value is 2.");
+            VolumeMultiplier.Value = Math.Min(Math.Max(VolumeMultiplier.Value, 0f), 2f);
+
+            
             if (Instance == null)
             {
                 Instance = this;
             }
 
-            mls = BepInEx.Logging.Logger.CreateLogSource(modGUID);
-            mls.LogInfo("WalkieVolume mod loaded.");
-
             harmony.PatchAll(typeof(WalkieVolumeBase));
             harmony.PatchAll(typeof(WalkieTalkiePatch));
+
+            mls.LogInfo($"WalkieVolume mod loaded. Walkie volume set to: {VolumeMultiplier.Value * 100}%");
         }
     }
 }
