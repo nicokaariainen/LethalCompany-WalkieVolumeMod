@@ -5,7 +5,7 @@ namespace WalkieVolume.Patches
     [HarmonyPatch(typeof(WalkieTalkie))]
     internal class WalkieTalkiePatch
     {
-        private static readonly float DEFAULT_VOLUME = 0.6f;
+        private static readonly float DEFAULT_VOLUME = 1f;
 
         [HarmonyPatch("OnEnable")]
         [HarmonyPrefix]
