@@ -38,7 +38,5 @@ namespace WalkieVolume
             harmony.PatchAll(typeof(WalkieVolumeBase));
             harmony.PatchAll(typeof(WalkieTalkiePatch));
         }
-
-
     }
 }
